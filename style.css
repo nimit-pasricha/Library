@@ -10,6 +10,9 @@
 .display-area {
   display: flex;
   gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttons {
