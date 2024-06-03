@@ -64,20 +64,36 @@ function displayBooks() {
     const deleteButton = book.appendChild(document.createElement("button"));
     deleteButton.className = "delete-button";
     deleteButton.setAttribute("data-index", index);
-    index++;
     deleteButton.textContent = "Delete";
+
+    const readToggle = book.appendChild(document.createElement("button"));
+    readToggle.className = "read-toggle";
+    readToggle.setAttribute("data-index", index);
+    readToggle.textContent = "Toggle Read Status";
+
+    index++;
   }
   deleteBook();
+  toggleRead();
 }
 
 function deleteBook() {
   const deleteButtons = document.querySelectorAll(".delete-button");
-  console.log(deleteButtons);
   deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener("click", () => {
       const indexToDelete = +deleteButton.getAttribute("data-index");
       myLibrary.splice(indexToDelete, 1);
-      console.log(myLibrary);
+      displayBooks();
+    });
+  });
+}
+
+function toggleRead() {
+  const readToggles = document.querySelectorAll(".read-toggle");
+  readToggles.forEach((readToggle) => {
+    readToggle.addEventListener("click", () => {
+      const indexToToggle = +readToggle.getAttribute("data-index");
+      myLibrary[indexToToggle].haveRead = !myLibrary[indexToToggle].haveRead;
       displayBooks();
     });
   });
