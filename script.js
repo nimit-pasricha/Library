@@ -1,4 +1,5 @@
 const myLibrary = [];
+let index;
 
 function Book(title, author, numPages, haveRead) {
   this.title = title;
@@ -28,7 +29,6 @@ function addBookToLibrary() {
       newBookStatus
     );
     myLibrary.push(newBook);
-    console.log(myLibrary);
     dialog.close();
     displayBooks();
     document.querySelector("form").reset();
@@ -41,6 +41,7 @@ function displayBooks() {
   const displayArea = document.querySelector(".display-area");
   displayArea.innerHTML = "";
 
+  index = 0;
   for (let oneBook of myLibrary) {
     const book = document.createElement("div");
     book.className = "book";
@@ -61,6 +62,23 @@ function displayBooks() {
       : "Not read yet";
 
     const deleteButton = book.appendChild(document.createElement("button"));
+    deleteButton.className = "delete-button";
+    deleteButton.setAttribute("data-index", index);
+    index++;
     deleteButton.textContent = "Delete";
   }
+  deleteBook();
+}
+
+function deleteBook() {
+  const deleteButtons = document.querySelectorAll(".delete-button");
+  console.log(deleteButtons);
+  deleteButtons.forEach((deleteButton) => {
+    deleteButton.addEventListener("click", () => {
+      const indexToDelete = +deleteButton.getAttribute("data-index");
+      myLibrary.splice(indexToDelete, 1);
+      console.log(myLibrary);
+      displayBooks();
+    });
+  });
 }
