@@ -31,6 +31,7 @@ function addBookToLibrary() {
     console.log(myLibrary);
     dialog.close();
     displayBooks();
+    document.querySelector("form").reset();
   });
 }
 
