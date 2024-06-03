@@ -22,3 +22,8 @@
 .book {
   border: solid black;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}

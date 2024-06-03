@@ -7,7 +7,15 @@ function Book(title, author, numPages, haveRead) {
   this.haveRead = haveRead;
 }
 
-function addBookToLibrary() {}
+function addBookToLibrary() {
+  const dialog = document.querySelector("dialog");
+  const newBookButton = document.querySelector(".new-book");
+  newBookButton.addEventListener("click", () => {
+    console.log("Hello");
+    dialog.showModal();
+  });
+}
+
 addBookToLibrary();
 
 function displayBooks() {
