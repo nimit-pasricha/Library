@@ -59,5 +59,8 @@ function displayBooks() {
     haveReadBook.textContent = oneBook.haveRead
       ? "Finished Reading"
       : "Not read yet";
+
+    const deleteButton = book.appendChild(document.createElement("button"));
+    deleteButton.textContent = "Delete";
   }
 }
